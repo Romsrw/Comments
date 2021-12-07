@@ -19,8 +19,8 @@ const CommentsList = () => {
   const [comments, setComments] = useState([
     {
       id: uuidv4(),
-      name: "Ivan Ivanov",
-      email: "ivanov@gmail.com",
+      name: "Kyle Mathews",
+      email: "mathews.kyle@gmail.com",
       timestamp: 1607395224000,
       text: `A random paragraph can also be an excellent way for a writer 
              to tackle writers' block. Writing block can often happen due to being 

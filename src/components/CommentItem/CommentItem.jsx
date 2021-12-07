@@ -34,7 +34,7 @@ const useStyle = makeStyles({
       alignItems: 'center'
   },
   rating: {
-      padding: '0px 30px'
+      padding: '0px 20px'
   }
 });
 
@@ -61,9 +61,9 @@ const CommentItem = ({ comment }) => {
       <CardContent className={classes.cardContent}>
         <Typography>{text}</Typography>
         <Box className={classes.ratingWrapper}>
-          <Button variant="contained">-</Button>
+          <Button variant="contained" size="small">-</Button>
           <Typography className={classes.rating}>{rating}</Typography>
-          <Button variant="contained">+</Button>
+          <Button variant="contained" size="small">+</Button>
         </Box>
       </CardContent>
     </Card>
