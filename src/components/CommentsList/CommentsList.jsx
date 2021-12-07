@@ -2,22 +2,16 @@ import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import CommentItem from "../CommentItem/CommentItem";
 
 const useStyle = makeStyles({
     commentsList: {
-        padding: "20px",
+        padding: "10px",
     },
 });
 
 /**
- * Вывод списка комментариев
- * @param {string} id - уникальный индитификатор
- * @param {string} name - имя автора 
- * @param {string} email - email автора 
- * @param {number} timestamp - время создания комментария
- * @param {string} text - текст комментария
- * @param {number} rating - рейтинг комментария
- * 
+ * Компонент списка комментариев
  */
 
 const CommentsList = () => {
@@ -51,9 +45,7 @@ const CommentsList = () => {
   ]);
   return (
     <Box className={classes.commentsList}>
-      {comments.map((comment) => {
-        return <Box>{comment.text}</Box>;
-      })}
+      {comments.map((comment) => <CommentItem key={comment.id} comment={comment}/>)}
     </Box>
   );
 };
