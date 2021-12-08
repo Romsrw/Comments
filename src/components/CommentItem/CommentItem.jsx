@@ -14,8 +14,7 @@ const useStyle = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
-
+    justifyContent: 'space-between',
   },
   cardMedia: {
     display: 'flex',
@@ -25,10 +24,6 @@ const useStyle = makeStyles({
   avatar: {
     margin: '0 30px',
     borderRadius: '50%',
-  },
-  date: {
-    position: 'relative',
-    right: 0,
   },
   cardContent: {
     margin: 0,
@@ -59,6 +54,12 @@ const useStyle = makeStyles({
 const CommentItem = ({ comment }) => {
   const classes = useStyle();
   const { id, name, email, timestamp, text, rating } = comment;
+
+  const handleClickLike = (id) => {
+    
+  }
+  
+
   return (
     <Card className={classes.commentsItem}>
       <Box className={classes.cardMediaWrapper}>
@@ -66,7 +67,7 @@ const CommentItem = ({ comment }) => {
           <Gravatar className={classes.avatar} alt={name} email={email} />
           <Typography variant='h5'>{name}</Typography>
         </Box>
-        <Typography className={classes.date}>
+        <Typography>
           {formatDistanceToNow(new Date(timestamp), {
             locale: ru,
             addSuffix: true,
@@ -80,7 +81,7 @@ const CommentItem = ({ comment }) => {
             -
           </Button>
           <Typography className={classes.rating}>{rating}</Typography>
-          <Button variant='contained' size='small'>
+          <Button variant='contained' size='small' onClick={handleClickLike}>
             +
           </Button>
         </Box>

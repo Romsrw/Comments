@@ -1,12 +1,12 @@
-import { Container } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import CommentsList from "./components/CommentsList/CommentsList";
+import { Container } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import CommentsList from './components/CommentsList/CommentsList';
 
 const useStyle = makeStyles({
   app: {
-    height: "100vh",
-    boxShadow: "0px 5px 10px 2px rgba(34, 60, 80, 0.2)",
-    backgroundColor: '#fff'
+    height: '100vh',
+    boxShadow: '0px 5px 10px 2px rgba(34, 60, 80, 0.2)',
+    backgroundColor: '#fff',
   },
 });
 

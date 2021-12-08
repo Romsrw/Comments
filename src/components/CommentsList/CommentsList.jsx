@@ -1,13 +1,13 @@
-import { makeStyles } from "@mui/styles";
-import { Box } from "@mui/system";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import CommentItem from "../CommentItem/CommentItem";
+import { makeStyles } from '@mui/styles';
+import { Box } from '@mui/system';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import CommentItem from '../CommentItem/CommentItem';
 
 const useStyle = makeStyles({
-    commentsList: {
-        padding: "10px",
-    },
+  commentsList: {
+    padding: '10px',
+  },
 });
 
 /**
@@ -19,8 +19,8 @@ const CommentsList = () => {
   const [comments, setComments] = useState([
     {
       id: uuidv4(),
-      name: "Kyle Mathews",
-      email: "mathews.kyle@gmail.com",
+      name: 'Kyle Mathews',
+      email: 'mathews.kyle@gmail.com',
       timestamp: 1607395224000,
       text: `A random paragraph can also be an excellent way for a writer 
              to tackle writers' block. Writing block can often happen due to being 
@@ -32,8 +32,8 @@ const CommentsList = () => {
     },
     {
       id: uuidv4(),
-      name: "Petr Petrov",
-      email: "Petrov@gmail.com",
+      name: 'Petr Petrov',
+      email: 'Petrov@gmail.com',
       timestamp: 1628390424000,
       text: `Another productive way to use this tool to begin a daily writing routine. 
                One way is to generate a random paragraph with the intention to try to rewrite 
@@ -43,9 +43,13 @@ const CommentsList = () => {
       rating: -5,
     },
   ]);
+
+
   return (
     <Box className={classes.commentsList}>
-      {comments.map((comment) => <CommentItem key={comment.id} comment={comment}/>)}
+      {comments.map((comment) => (
+        <CommentItem key={comment.id} comment={comment} />
+      ))}
     </Box>
   );
 };
