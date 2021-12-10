@@ -2,8 +2,8 @@ import { makeStyles } from "@mui/styles";
 import { Box } from "@mui/system";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import CommentForm from "../CommentForm/CommentForm";
 import CommentItem from "../CommentItem/CommentItem";
+import CommentForm from "../CommentForm/CommentForm";
 
 const useStyle = makeStyles({
   commentsList: {
@@ -55,10 +55,10 @@ const CommentsList = () => {
         <CommentItem
           key={comment.id}
           comment={comment}
-          createNewComment={createNewComment}
+          
         />
       ))}
-      <CommentForm createNewComment={createNewComment} />
+        <CommentForm createNewComment={createNewComment}/>
     </Box>
   );
 };
