@@ -65,4 +65,3 @@ const CommentsList = () => {
 
 export default CommentsList;
 
-// @param {Function} createNewComment - callback фукнция, для создания нового комментария
