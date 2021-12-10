@@ -48,10 +48,9 @@ const useStyle = makeStyles({
  * @param {number} timestamp - время создания комментария
  * @param {string} text - текст комментария
  * @param {number} rating - рейтинг комментария
- *
  */
 
-const CommentItem = ({ comment }) => {
+const CommentItem = ({ comment}) => {
   const classes = useStyle();
   const { id, name, email, timestamp, text, rating } = comment;
 
