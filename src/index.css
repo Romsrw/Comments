@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: azure;
+  background-color: rgba(229, 240, 240, 0.774);
 }
 
 code {

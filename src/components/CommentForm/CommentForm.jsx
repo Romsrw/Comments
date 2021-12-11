@@ -1,10 +1,10 @@
 import { makeStyles } from "@mui/styles";
+import { useEffect, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const useStyle = makeStyles(() => ({
+const useStyle = makeStyles({
   formWrapper: {
     display: "flex",
     flexDirection: "column",
@@ -17,11 +17,11 @@ const useStyle = makeStyles(() => ({
     flexDirection: "column",
     width: "300px",
   },
-}));
+});
 
 /**
- * Компонент создания комментария
- * @param {function} createNewComment - callback фукнция, для создания нового комментария
+ * Форма создания комментария
+ * @param {function} createNewComment - метод для создания нового комментария.
  */
 
 const CommentForm = ({ createNewComment }) => {
@@ -46,7 +46,6 @@ const CommentForm = ({ createNewComment }) => {
     } else {
       setErrors((prev) => ({ ...prev, email: false }));
     }
-
     setComment((prev) => ({ ...prev, email: e.target.value }));
   };
 
@@ -101,9 +100,10 @@ const CommentForm = ({ createNewComment }) => {
       textError: false,
     });
   };
+
   return (
     <Box className={classes.formWrapper}>
-      <Typography>Добавить комментарий</Typography>
+      <Typography>Новый комментарий</Typography>
       <Box className={classes.form} component="form" autoComplete="off">
         <TextField
           id="name"
@@ -120,32 +120,31 @@ const CommentForm = ({ createNewComment }) => {
           label="Email"
           variant="outlined"
           size="small"
-          error={errors.email}
-          value={comment.email}
           margin="dense"
+          value={comment.email}
+          error={errors.email}
           onChange={handleChangeEmail}
         />
         <TextField
           id="text"
           label="Комментарий"
           multiline
-          maxRows={5}
+          rows={5}
           variant="outlined"
           size="small"
-          error={errors.text}
-          value={comment.text}
           margin="dense"
+          value={comment.text}
+          error={errors.text}
           onChange={handleChangeText}
         />
         <Button
           type="submit"
-          size="small"
+          size="medium"
           variant="contained"
-          className={classes.btn}
           onClick={addNewComment}
           disabled={!formValid}
         >
-          Добавить
+          Добавить комментарий
         </Button>
       </Box>
     </Box>
