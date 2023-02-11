@@ -1,23 +1,8 @@
-import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Button, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import { v4 as uuidv4 } from "uuid";
-
-const useStyle = makeStyles({
-  formWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    padding: "10px 0",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    width: "300px",
-  },
-});
+import { useStyle } from "./CommentForm.syle";
 
 /**
  * Форма создания комментария
@@ -34,24 +19,30 @@ const CommentForm = ({ createNewComment }) => {
   });
   const [formValid, setFormValid] = useState(false);
 
-  const handleChangeName = (e) => {
-    setComment((prev) => ({ ...prev, name: e.target.value }));
-    setErrors((prev) => ({ ...prev, name: false }));
+  const handleChangeName = (event) => {
+    setComment((prev) => ({ ...prev, name: event.target.value }));
+    setErrors((prev) => ({
+      ...prev,
+      name: event.target.value.trim() ? false : true,
+    }));
   };
 
-  const handleChangeEmail = (e) => {
+  const handleChangeEmail = (event) => {
     const regexEmail = /\S+@\S+\.\S+/;
-    if (!!e.target.value && !regexEmail.test(e.target.value)) {
+    if (!!event.target.value && !regexEmail.test(event.target.value)) {
       setErrors((prev) => ({ ...prev, email: true }));
     } else {
       setErrors((prev) => ({ ...prev, email: false }));
     }
-    setComment((prev) => ({ ...prev, email: e.target.value }));
+    setComment((prev) => ({ ...prev, email: event.target.value }));
   };
 
-  const handleChangeText = (e) => {
-    setComment((prev) => ({ ...prev, text: e.target.value }));
-    setErrors((prev) => ({ ...prev, text: false }));
+  const handleChangeText = (event) => {
+    setComment((prev) => ({ ...prev, text: event.target.value }));
+    setErrors((prev) => ({
+      ...prev,
+      text: event.target.value.trim() ? false : true,
+    }));
   };
 
   useEffect(() => {
@@ -76,8 +67,8 @@ const CommentForm = ({ createNewComment }) => {
     errors.text,
   ]);
 
-  const addNewComment = (e) => {
-    e.preventDefault();
+  const addNewComment = (event) => {
+    event.preventDefault();
     if (!comment.name || !comment.email || !comment.text) {
       setErrors({
         name: !comment.name,
@@ -95,9 +86,9 @@ const CommentForm = ({ createNewComment }) => {
     createNewComment(newComment);
     setComment({ name: "", email: "", text: "" });
     setErrors({
-      nameError: false,
-      emailError: false,
-      textError: false,
+      name: false,
+      email: false,
+      text: false,
     });
   };
 
@@ -144,7 +135,7 @@ const CommentForm = ({ createNewComment }) => {
           onClick={addNewComment}
           disabled={!formValid}
         >
-          Добавить комментарий
+          Добавить
         </Button>
       </Box>
     </Box>

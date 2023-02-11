@@ -1,48 +1,10 @@
-import { makeStyles } from "@mui/styles";
 import { useEffect, useState } from "react";
 import Gravatar from "react-gravatar";
-import { Button, Card, CardContent, Collapse, Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { ru } from "date-fns/locale";
-
-const useStyle = makeStyles({
-  commentsItem: {
-    padding: "10px",
-    marginBottom: "10px",
-  },
-  cardMediaWrapper: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-  },
-  cardMedia: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  avatar: {
-    margin: "0 30px",
-    borderRadius: "50%",
-  },
-  cardContent: {
-    margin: 0,
-    padding: "10px",
-  },
-  text: {
-    wordBreak: "break-all",
-  },
-  ratingWrapper: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "end",
-    alignItems: "center",
-  },
-  rating: {
-    padding: "0px 20px",
-  },
-});
+import { Box } from "@mui/system";
+import { Button, Collapse, ListItem, Typography } from "@mui/material";
+import { useStyle } from "./CommentItem.style";
 
 /**
  * Компонент комментария
@@ -62,8 +24,12 @@ const CommentItem = ({ comment, handleChangeRating }) => {
   }, [rating]);
 
   return (
-    <Card className={classes.commentsItem}>
-      <Collapse in={isOpen} collapsedSize={40}>
+    <ListItem className={classes.commentsItem}>
+      <Collapse
+        className={classes.collapseWrapper}
+        in={isOpen}
+        collapsedSize={30}
+      >
         {!isOpen ? (
           <Button onClick={() => setIsOpen(true)}>Открыть комментарий</Button>
         ) : (
@@ -80,7 +46,7 @@ const CommentItem = ({ comment, handleChangeRating }) => {
                 })}
               </Typography>
             </Box>
-            <CardContent className={classes.cardContent}>
+            <Box className={classes.cardContent}>
               <Typography className={classes.text}>{text}</Typography>
               <Box className={classes.ratingWrapper}>
                 <Button
@@ -99,11 +65,11 @@ const CommentItem = ({ comment, handleChangeRating }) => {
                   +
                 </Button>
               </Box>
-            </CardContent>
+            </Box>
           </>
         )}
       </Collapse>
-    </Card>
+    </ListItem>
   );
 };
 
